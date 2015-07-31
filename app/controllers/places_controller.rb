@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -9,7 +10,6 @@ class PlacesController < ApplicationController
   end
 
   def show
-    respond_with(@place)
   end
 
   def new
@@ -21,9 +21,15 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new(place_params)
-    @place.save
-    respond_with(@place)
+    @place = current_user.places.new(place_params)
+
+    respond_to do |format|
+      if @place.save
+        format.html { redirect_to @place, notice: 'Place was successfully created'}
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def update
@@ -42,6 +48,6 @@ class PlacesController < ApplicationController
     end
 
     def place_params
-      params.require(:place).permit(:name, :address, :description, :phone, :website, :user_id)
+      params.require(:place).permit(:name, :address, :description, :phone, :website)
     end
 end
