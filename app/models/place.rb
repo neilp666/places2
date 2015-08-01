@@ -9,5 +9,6 @@ class Place < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
 
+  has_many :reviews, dependent: :destroy
 
 end

@@ -23,15 +23,14 @@
 
 <div class="col-md-9">
   <h3>Reviews by People</h3>
+      <% if current_user %>
+            <h5>New Review</h5>
+              <%= render "reviews/form" %>
+            <h5>All Reviews</h5>
+              <%= render @reviews %>
+      <% end %>
 </div>
 </div>
-
-
-
-
-
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
 
 <script type="text/javascript">
       function initialize() {
