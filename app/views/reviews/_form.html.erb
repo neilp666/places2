@@ -3,10 +3,24 @@
 
   <div class="form-inputs">
     <%= f.input :content, required: true %>
-    <%= f.hidden_field :place_id, required: true, value: @place_id %>
+    <%= f.hidden_field :place_id, required: true, value: @place.id %>
+    <%= f.hidden_field :score, required: true %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
 <% end %>
+
+
+<script>
+
+$(".score").raty({
+  starOn: "<%= image_path('star-on.png') %>",
+  starOff: "<%= image_path('star-off.png') %>",
+  target: "#review_score",
+  targetKeep: true,
+  targetType: "number"
+});
+
+</script>
