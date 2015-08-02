@@ -12,7 +12,6 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Places</a></li>
         <li><%= link_to "Places", places_path %></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -24,6 +23,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if current_user %>
+            <li><%= link_to "Dashboard", dashboard_path %></li>
             <li><%= link_to "Settings", edit_user_registration_path %></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <% else %>
