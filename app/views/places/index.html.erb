@@ -35,7 +35,7 @@
        $(".average_<%= place.id %>").raty({
           starOn: "<%= image_path('star-on.png') %>",
           starOff: "<%= image_path('star-off.png') %>",
-          score: <%= place.total_average.rating %>, 
+          score: <%= place.total_average_rating %>, 
           readOnly: true
         });
        <% end %>
